@@ -1,24 +1,29 @@
 import React from 'react';
 import { FiEdit } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import './List.css';
 
 const List = (props) => {
     const { agend, index, completeAgenda, setEdit, removeAgenda } = props;
     return (
-        <div>
+        <div className='todo-rows'>
             <div
                 className={agend.isComplete ?
                     'todo-row complete' : 'todo-row'}
                 key={index}
             >
                 <div key={agend.id} onClick={() => completeAgenda(agend.id)}>
-                    <span>{agend.title}</span>
-                    <span>{agend.date}</span>
-                    <span>{agend.time}</span>
+                    <span className='row-title'>{agend.title}</span>
+                    <p className='row-para'>{agend.desc}</p>
+                    <div className="row-schedule">
+                        <span className='row-date'>{agend.date}</span>
+                        <span className='row-time'>{agend.time}</span>
+                    </div>
                 </div>
-                <div className="icon">
+                <div className="icons">
                     <FiEdit
                         onClick={() => setEdit({
+                            id: agend.id,
                             title: agend.title,
                             desc: agend.desc,
                             date: agend.date,
@@ -28,7 +33,7 @@ const List = (props) => {
                         className='edit-icon'
                     />
                     <RiDeleteBinLine
-                        onClick={() => removeAgenda}
+                        onClick={() => removeAgenda(agend.id)}
                         className='delete-icon'
                     />
                 </div>

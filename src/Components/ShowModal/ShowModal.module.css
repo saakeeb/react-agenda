@@ -11,12 +11,18 @@
 }
 
 .modalContent {
-    width: 50%;
+    width: 100%;
+    max-width: 460px;
     background-color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     padding: 25px;
     position: relative;
     border-radius: 10px;
+}
+
+.modalContent h2{
+    text-align: center;
+    margin-top: 30px;
 }
 
 .modalClose {
@@ -28,12 +34,12 @@
 }
 
 .modalClose svg path {
-    stroke: #333333;
+    stroke: #333;
     width: 20px;
     height: 20px;
 }
 
-.modalClose:hover svg path{
+.modalClose:hover svg path {
     stroke: #000;
 }
 
@@ -57,4 +63,21 @@
 .modalForm div input,
 .modalForm div textarea {
     flex-basis: 70%;
+}
+
+.modalButton {
+    background-color: #006edc;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    display: block;
+    margin: auto;
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.modalButton:hover,
+.modalButton:active {
+    background-color: #1087ff;
 }

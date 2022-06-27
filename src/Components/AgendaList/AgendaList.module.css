@@ -1,0 +1,5 @@
+.rowsContainer{
+    display: block;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+}
