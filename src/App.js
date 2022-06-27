@@ -23,18 +23,18 @@ const App = () => {
 
   return (
     <div className={style.app}>
-      {
+      {/* {
         modalShow &&
         <ShowModal
             onCloseModal={setModalShow}
             date={date}
           ></ShowModal>
         
-      }
+      } */}
       
       <div className={style.appContent}>
         <Calendar onClickDay={handleClick} onChange={handleOnChange} value={date} />
-        <Agenda date={date}></Agenda>
+        <Agenda date={date} modalShow={modalShow} onCloseModal={setModalShow}></Agenda>
       </div>
     </div>
   );

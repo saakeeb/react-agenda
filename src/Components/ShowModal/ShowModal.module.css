@@ -27,6 +27,16 @@
     border-radius: 0 10px 0 0;
 }
 
+.modalClose svg path {
+    stroke: #333333;
+    width: 20px;
+    height: 20px;
+}
+
+.modalClose:hover svg path{
+    stroke: #000;
+}
+
 .modalForm {
     display: block;
     width: 100%;
