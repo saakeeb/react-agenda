@@ -1,33 +1,44 @@
-import { Modal } from 'bootstrap';
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import moment from 'moment';
+import React, { useState } from 'react';
+import style from './ShowModal.module.css';
 
 const ShowModal = (props) => {
-    console.log(props);
+    const [modalDate, setModalDate] = useState({
+        date: props.date
+    });
+
+    console.log("date", modalDate);
+
+    const handleOnChange = (e) => {
+        setModalDate(e.target.value);
+    }
+
     return (
-        <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Modal heading
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>Centered Modal</h4>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
-        </Modal>
+        <div className={style.modal}>
+            <div className={style.modalContent}>
+                <button onClick={() => props.onCloseModal(false)} className={style.modalClose}>X</button>
+                <h2>{moment(props.date).format('Do MMMM YYYY')}, Agenda</h2>
+                <form className={style.modalForm}>
+                    <div>
+                        <label htmlFor="tile">Title</label>
+                        <input type="text" name="title" placeholder='Title'/>
+                    </div>
+                    <div>
+                        <label htmlFor="desc">Description</label>
+                        <textarea name="desc" placeholder='Description'></textarea>
+                    </div>
+                    <div>
+                        <label htmlFor="date">Date</label>
+                        <input type="date" name="date" value={modalDate} onChange={handleOnChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="time">Time</label>
+                        <input type="time" name="time" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
     );
 };
 

@@ -1,37 +1,41 @@
 import React, { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
-
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import ShowModal from './Components/ShowModal/ShowModal';
+import Agenda from './Components/Agenda/Agenda';
+
+import style from "./App.module.css"
 
 const App = () => {
-  const [value, setValue] = useState(new Date());
-  const [modalShow, setModalShow] = React.useState(false);
+  const [date, setDate] = useState(new Date());
+  const [modalShow, setModalShow] = useState(false);
 
   const handleOnChange = (e) => {
-    // console.log(e);
-    setValue(e);
+    // console.log("handleOnChange", e);
+    setDate(e);
   }
 
   const handleClick = (e) => {
-    console.log(e);
+    console.log("handleClick", e);
+    // setValue(e);
+    setModalShow(true);
   }
 
   return (
-    <div>
-      <Calendar onClickDay={handleClick} onChange={() => handleOnChange()} value={value} />
+    <div className={style.app}>
+      {
+        modalShow &&
+        <ShowModal
+            onCloseModal={setModalShow}
+            date={date}
+          ></ShowModal>
+        
+      }
       
-      
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch modal
-      </Button>
-
-      <ShowModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <div className={style.appContent}>
+        <Calendar onClickDay={handleClick} onChange={handleOnChange} value={date} />
+        <Agenda date={date}></Agenda>
+      </div>
     </div>
   );
 };
