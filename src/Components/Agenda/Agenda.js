@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React, { useState } from 'react';
 import AgendaList from '../AgendaList/AgendaList';
+// import CSVDown from '../CSVDown/CSVDown';
 import ShowModal from '../ShowModal/ShowModal';
 import style from './Agenda.module.css';;
 
@@ -15,6 +16,14 @@ const Agenda = (props) => {
         setAgenda(new_agenda);
         // console.log("agenda.js", ...agenda);
     }
+
+    // const [edit, setEdit] = useState({
+    //     id: null,
+    //     title: "",
+    //     desc: "",
+    //     date: "",
+    //     time: ""
+    // });
 
     const updateAgenda = (todoId, newValue) => {
         setAgenda(prev => prev.map(item => (item.id === todoId ? newValue : item)));
@@ -40,13 +49,15 @@ const Agenda = (props) => {
     return (
         <div>
             <h2 className={style.headerTitle}>{moment(props.date).format('Do MMMM YYYY')}, Agenda</h2>
-            
+            {/* show Output agenda */}
             <AgendaList
                 agenda={agenda}
+                setAgenda={setAgenda}
                 completeAgenda={completeAgenda}
                 removeAgenda={removeAgenda}
                 updateAgenda={updateAgenda}
             />
+            
             {/* show modal on condition */}
             {
                 props.modalShow &&
@@ -55,7 +66,6 @@ const Agenda = (props) => {
                     date={props.date}
                     onSubmit={addAgenda}
                 ></ShowModal>
-
             }
         </div>
     );

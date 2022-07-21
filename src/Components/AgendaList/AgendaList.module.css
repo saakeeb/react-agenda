@@ -3,3 +3,42 @@
     scroll-behavior: smooth;
     overflow-y: auto;
 }
+.csvContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.csvInput {
+  color: #878787;
+}
+
+.csvInput[type="file"]::-webkit-file-upload-button,
+ .csvOutput{
+  background: #0d6efd;
+  border: 2px solid #0d6efd;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  padding: 7px 25px;
+  transition: all 1s ease;
+}
+
+.csvInput[type="file"]::-webkit-file-upload-button{
+    font-size: 13px;
+    padding: 10px 25px;
+}
+
+.csvInput[type="file"]::-webkit-file-upload-button:hover,
+ .csvOutput:hover {
+  background: #fff;
+  border: 2px solid #535353;
+  color: #000;
+}
+
+.csvImport{
+    flex-basis: 50%;
+    width: 50%;
+}

@@ -50,8 +50,10 @@ const ShowModal = (props) => {
                 <button onClick={() => props.onCloseModal(false)} className={style.modalClose}>
                     <GrClose />
                 </button>
+               
                 <h2>{moment(props.date).format('Do MMMM YYYY')}, Agenda</h2>
-
+                
+                {/* Mpdal form */}
                 <form className={style.modalForm} onSubmit={handleOnSubmit}>
                     {
                         props.edit ?
@@ -64,6 +66,7 @@ const ShowModal = (props) => {
                                             name="title"
                                             placeholder='Title'
                                             value={input.title}
+                                            required
                                             onChange={handleOnChange}
                                         />
                                     </div>
@@ -104,6 +107,7 @@ const ShowModal = (props) => {
                                             name="title"
                                             placeholder='Title'
                                             value={input.title}
+                                            required
                                             onChange={handleOnChange}
                                         />
                                     </div>

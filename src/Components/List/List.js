@@ -6,7 +6,8 @@ import './List.css';
 const List = (props) => {
     const { agend, index, completeAgenda, setEdit, removeAgenda } = props;
     return (
-        <div className='todo-rows'>
+        <div className={agend.isComplete ?
+            'todo-rows complete' : 'todo-rows'}>
             <div
                 className={agend.isComplete ?
                     'todo-row complete' : 'todo-row'}
